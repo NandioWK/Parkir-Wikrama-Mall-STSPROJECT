@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Sistem Parkir Wikrama Mall</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="halaman-login">
+
+<div class="wrapper-login">
+  <div class="card-login">
+
+    <div class="kepala-login">
+      <div class="logo-bulat">W</div>
+      <h2>Wikrama Mall</h2>
+      <p>Sistem Parkir Wikrama Mall</p>
+    </div>
+
+    <form id="formLogin" class="form-login" novalidate>
+    <div class="grup-input">
+      <label for="namapengguna">Nama Pengguna</label>
+        <input
+          type="text"
+          id="namapengguna"
+          placeholder="Masukkan nama pengguna"
+          autocomplete="username"
+          required
+        >
+    </div>
+      <div class="grup-input">
+        <label for="katasandi">Kata Sandi</label>
+        <input
+          type="password"
+          id="katasandi"
+          placeholder="Masukkan password"
+          autocomplete="current-password"
+          required
+        >
+    </div>
+
+    <div id="pesanError" class="pesan-error" role="alert"></div>
+
+      <button type="submit" class="tombol-login">Masuk</button>
+    </form>
+
+    <div class="kotak-demo">
+      <p class="teks-demo">
+        Pengguna: <strong class="teks-demo-kuat">admin</strong><br>
+        Kata sandi: <strong class="teks-demo-kuat">wikrama123</strong>
+      </p>
+    </div>
+
+    <p class="teks-balik">
+      <a href="index.html">Kembali ke Beranda</a>
+    </p>
+
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Sistem Parkir Wikrama Mall</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="halaman-admin">
+
+<header class="header-admin">
+  <div class="kontainer">
+    <div class="merek-admin">
+      <div class="logo-bulat logo-kecil">W</div>
+      <span>Parkir Mall Wikrama</span>
+    </div>
+    <div class="info-header">
+      <div class="tanggal-hidup" id="tanggalHidup">--/--/----</div>
+      <div class="waktu-hidup" id="waktuHidup">--:--:--</div>
+      <div id="statusParkir" class="badge-status badge-hijau">Buka</div>
+      <div class="infojam">
+        <span>Buka 04:00</span>
+        <span>-</span>
+        <span span>Tutup 22:00</span>
+      </div>
+      <button class="tombol-keluar-admin" id="tombolLogout">Keluar</button>
+    </div>
+  </div>
+</header>
+
+<main class="utama-admin">
+  <div class="kontainer">
+
+  <div class="grid-statistik">
+    <div class="card-statistik">
+      <span class="label-statistik">Sedang Parkir</span>
+      <strong id="jumlahParkir">0</strong>
+    </div>
+    <div class="card-statistik">
+      <span class="label-statistik">Sudah Keluar</span>
+      <strong id="jumlahKeluar">0</strong>
+    </div>
+    <div class="card-statistik">
+      <span class="label-statistik">Total Penghasilan</span>
+      <strong id="totalPenghasilan">Rp 0</strong>
+    </div>
+    <div class="card-statistik">
+      <span class="label-statistik">Kapasitas Terpakai</span>
+      <strong id="infoKapasitas">0 / 100</strong>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3 class="judul-panel">Tambah Kendaraan</h3>
+    <form id="formParkir" novalidate>
+      <div class="baris-form">
+
+      <div class="grup-input">
+        <label for="platNomor">Plat Nomor</label>
+          <input
+            type="text"
+            id="platNomor"
+            placeholder="Masukkan plat Nomor"
+            maxlength="12"
+          >
+      </div>
+
+      <div class="grup-input">
+        <label for="jenisKendaraan">Jenis Kendaraan</label>
+          <select id="jenisKendaraan">
+            <option value="">Pilih Jenis</option>
+            <option value="motor">Motor Rp 3.000/jam</option>
+            <option value="mobil">Mobil Rp 5.000/jam</option>
+            <option value="bus">Bus Rp 10.000/jam</option>
+          </select>
+      </div>
+
+      <div class="grup-input">
+        <label for="jamMasuk">Jam Masuk</label>
+          <input type="time" id="jamMasuk">
+      </div>
+
+      <div class="grup-aksi-form">
+        <label></label>
+        <button type="submit" class="tombol-primer">Tambah</button>
+      </div>
+
+    </div>
+  </form>
+
+      <div id="notifikasi" class="notifikasi tersembunyi" role="alert"></div>
+  </div>
+
+  <div class="panel">
+    <div class="kepala-tabel">
+      <h3 class="judul-panel">Data Kendaraan</h3>
+    <div class="kontrol-tabel">
+      <input
+        type="text"
+        id="cariPlat"
+        placeholder="Cari plat nomor"
+        class="input-cari"
+      >
+        <button class="tombol-hapuss" id="tombolHapusSemua">Hapus Semua</button>
+    </div>
+  </div>
+
+  <div class="pembungkus-tabel">
+    <table class="tabel-parkir">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Plat Nomor</th>
+          <th>Jenis</th>
+          <th>Jam Masuk</th>
+          <th>Jam Keluar</th>
+          <th>Tgl Keluar</th>
+          <th>Durasi</th>
+          <th>Total Biaya</th>
+          <th>Status</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+        <tbody id="isiTabel">
+          <tr class="baris-kosong">
+            <td colspan="10">Belum ada data kendaraan</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  </div>
+</main>
+
+<div id="modalEdit" class="modal tersembunyi" role="dialog" aria-modal="true" aria-labelledby="judulModal">
+  <div class="konten-modal">
+    <div class="kepala-modal">
+      <h3 id="judulModal">Edit Kendaraan</h3>
+      <button class="tutup-modal" id="tutupModal" aria-label="Tutup modal">&times;</button>
+    </div>
+    <form id="formEdit" novalidate>
+      <input type="hidden" id="editId">
+      <div class="grup-input">
+        <label for="editPlat">Plat Nomor</label>
+        <input type="text" id="editPlat" maxlength="12">
+      </div>
+      <div class="grup-input">
+        <label for="editJenis">Jenis Kendaraan</label>
+        <select id="editJenis">
+          <option value="motor">Motor</option>
+          <option value="mobil">Mobil</option>
+          <option value="bus">Bus</option>
+        </select>
+      </div>
+      <div class="grup-input">
+        <label for="editJamMasuk">Jam Masuk</label>
+        <input type="time" id="editJamMasuk">
+      </div>
+    <button type="submit" class="tombol-primer tombol-simpan">Simpan Perubahan</button>
+  </form>
+  </div>
+</div>
+
+<div id="lapisanModal" class="lapisan-modal tersembunyi"></div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
